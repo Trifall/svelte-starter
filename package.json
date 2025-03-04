@@ -16,7 +16,7 @@
 		"ui": "pnpm dlx shadcn-svelte@next",
 		"auth": "pnpm dlx @better-auth/cli@latest",
 		"auth:generate": "pnpm dlx @better-auth/cli@latest generate --y --output ./src/lib/server/schema/auth.schema.ts && prettier --write ./src/lib/server/schema/auth.schema.ts",
-		"railway": "npx @better-auth/cli@latest generate --y --output ./src/lib/server/schema/auth.schema.ts && prettier --write ./src/lib/server/schema/auth.schema.ts && npx drizzle-kit generate && npx drizzle-kit migrate"
+		"railway": "npx @better-auth/cli@latest generate --y --output ./src/lib/server/schema/auth.schema.ts && prettier --write ./src/lib/server/schema/auth.schema.ts && npx drizzle-kit push --force --verbose"
 	},
 	"devDependencies": {
 		"@eslint/compat": "^1.2.7",
