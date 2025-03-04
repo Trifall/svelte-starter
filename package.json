@@ -48,6 +48,7 @@
 		"vite": "^6.1.1"
 	},
 	"dependencies": {
+		"@tailwindcss/typography": "^0.5.16",
 		"better-auth": "^1.1.19",
 		"drizzle-orm": "^0.39.3",
 		"postgres": "^3.4.5"
