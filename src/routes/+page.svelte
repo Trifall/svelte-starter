@@ -36,13 +36,4 @@
 			<Button href="/signin" class="w-fit" size="lg">Sign in</Button>
 		</div>
 	{/if}
-
-	<a
-		class="text-muted-foreground underline hover:text-foreground"
-		href="https://github.com/dotnize/svelte-starter"
-		target="_blank"
-		rel="noreferrer noopener"
-	>
-		dotnize/svelte-starter
-	</a>
 </div>
