@@ -6,7 +6,7 @@ import { drizzleAdapter } from "better-auth/adapters/drizzle";
 import { env } from "$env/dynamic/private";
 import { db } from "./db";
 
-if (!PUBLIC_BASE_URL || !env?.RAILWAY_PUBLIC_DOMAIN) throw new Error("PUBLIC_BASE_URL is not set");
+if (!PUBLIC_BASE_URL && !env?.RAILWAY_PUBLIC_DOMAIN) throw new Error("PUBLIC_BASE_URL is not set");
 
 export const auth = betterAuth({
 	baseURL: env.RAILWAY_PUBLIC_DOMAIN ?? PUBLIC_BASE_URL!,
