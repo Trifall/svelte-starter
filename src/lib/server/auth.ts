@@ -1,15 +1,15 @@
+import { env } from "$env/dynamic/public";
 import { BETTER_AUTH_SECRET, GITHUB_CLIENT_ID, GITHUB_CLIENT_SECRET } from "$env/static/private";
-import { PUBLIC_BASE_URL } from "$env/static/public";
 import { betterAuth } from "better-auth";
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
 
 import { db } from "./db";
 
-if (!PUBLIC_BASE_URL && !import.meta.env?.RAILWAY_PUBLIC_DOMAIN)
+if (!env.PUBLIC_BASE_URL && !import.meta.env?.RAILWAY_PUBLIC_DOMAIN)
 	throw new Error("PUBLIC_BASE_URL is not set");
 
 export const auth = betterAuth({
-	baseURL: import.meta.env?.RAILWAY_PUBLIC_DOMAIN ?? PUBLIC_BASE_URL!,
+	baseURL: import.meta.env?.RAILWAY_PUBLIC_DOMAIN ?? env.PUBLIC_BASE_URL!,
 	database: drizzleAdapter(db, {
 		provider: "pg",
 	}),
