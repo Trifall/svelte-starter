@@ -9,7 +9,9 @@ if (!env.PUBLIC_BASE_URL && !import.meta.env?.RAILWAY_PUBLIC_DOMAIN)
 	throw new Error("PUBLIC_BASE_URL is not set");
 
 export const auth = betterAuth({
-	baseURL: import.meta.env?.RAILWAY_PUBLIC_DOMAIN ?? env.PUBLIC_BASE_URL!,
+	baseURL: import.meta.env?.RAILWAY_PUBLIC_DOMAIN
+		? `https://${import.meta.env?.RAILWAY_PUBLIC_DOMAIN}`
+		: env.PUBLIC_BASE_URL!,
 	database: drizzleAdapter(db, {
 		provider: "pg",
 	}),
