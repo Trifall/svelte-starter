@@ -49,7 +49,6 @@
 		"vite": "^6.1.1"
 	},
 	"dependencies": {
-		"@sveltejs/adapter-node": "^5.2.12",
 		"@tailwindcss/typography": "^0.5.16",
 		"better-auth": "^1.1.19",
 		"dotenv": "^16.4.7",
