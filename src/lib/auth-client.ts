@@ -1,5 +1,5 @@
-import { env } from "$env/dynamic/public";
-import { createAuthClient } from "better-auth/svelte";
+import { env } from '$env/dynamic/public';
+import { createAuthClient } from 'better-auth/svelte';
 
 export const authClient = createAuthClient({
 	baseURL: import.meta.env?.RAILWAY_PUBLIC_DOMAIN

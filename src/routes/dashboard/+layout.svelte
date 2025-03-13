@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { Button } from "$lib/components/ui/button";
-	import type { Snippet } from "svelte";
-	import type { LayoutData } from "./$types";
+	import { Button } from '$lib/components/ui/button';
+	import type { Snippet } from 'svelte';
+	import type { LayoutData } from './$types';
 
 	let { data, children }: { data: LayoutData; children: Snippet } = $props();
 </script>

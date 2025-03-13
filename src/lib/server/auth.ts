@@ -1,19 +1,19 @@
-import { env } from "$env/dynamic/public";
-import { BETTER_AUTH_SECRET, GITHUB_CLIENT_ID, GITHUB_CLIENT_SECRET } from "$env/static/private";
-import { betterAuth } from "better-auth";
-import { drizzleAdapter } from "better-auth/adapters/drizzle";
+import { env } from '$env/dynamic/public';
+import { BETTER_AUTH_SECRET, GITHUB_CLIENT_ID, GITHUB_CLIENT_SECRET } from '$env/static/private';
+import { betterAuth } from 'better-auth';
+import { drizzleAdapter } from 'better-auth/adapters/drizzle';
 
-import { db } from "./db";
+import { db } from './db';
 
 if (!env.PUBLIC_BASE_URL && !import.meta.env?.RAILWAY_PUBLIC_DOMAIN)
-	throw new Error("PUBLIC_BASE_URL is not set");
+	throw new Error('PUBLIC_BASE_URL is not set');
 
 export const auth = betterAuth({
 	baseURL: import.meta.env?.RAILWAY_PUBLIC_DOMAIN
 		? `https://${import.meta.env?.RAILWAY_PUBLIC_DOMAIN}`
 		: env.PUBLIC_BASE_URL!,
 	database: drizzleAdapter(db, {
-		provider: "pg",
+		provider: 'pg',
 	}),
 	secret: BETTER_AUTH_SECRET,
 	// https://www.better-auth.com/docs/concepts/session-management#session-caching

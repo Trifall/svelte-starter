@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { authClient } from "$lib/auth-client";
-	import { Button } from "$lib/components/ui/button";
+	import { authClient } from '$lib/auth-client';
+	import { Button } from '$lib/components/ui/button';
 
 	const { data } = $props();
 </script>
@@ -12,7 +12,7 @@
 			<Button
 				type="button"
 				onclick={() =>
-					authClient.signIn.social({ provider: "discord", callbackURL: data.redirectPath })}
+					authClient.signIn.social({ provider: 'discord', callbackURL: data.redirectPath })}
 				variant="outline"
 				size="lg"
 			>
@@ -21,7 +21,7 @@
 			<Button
 				type="button"
 				onclick={() =>
-					authClient.signIn.social({ provider: "github", callbackURL: data.redirectPath })}
+					authClient.signIn.social({ provider: 'github', callbackURL: data.redirectPath })}
 				variant="outline"
 				size="lg"
 			>
@@ -30,7 +30,7 @@
 			<Button
 				type="button"
 				onclick={() =>
-					authClient.signIn.social({ provider: "google", callbackURL: data.redirectPath })}
+					authClient.signIn.social({ provider: 'google', callbackURL: data.redirectPath })}
 				variant="outline"
 				size="lg"
 			>
