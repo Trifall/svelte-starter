@@ -13,6 +13,7 @@
 		"format": "prettier --write .",
 		"lint": "prettier --check . && eslint .",
 		"db": "drizzle-kit",
+		"db:migrate": "drizzle-kit generate && drizzle-kit migrate",
 		"ui": "bun x shadcn-svelte@next",
 		"auth": "bun x @better-auth/cli@latest",
 		"auth:generate": "bun x @better-auth/cli@latest generate --y --output ./src/lib/server/schema/auth.schema.ts && prettier --write ./src/lib/server/schema/auth.schema.ts",
