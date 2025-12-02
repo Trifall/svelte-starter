@@ -31,7 +31,7 @@
 			return `${ageInMonths} month${ageInMonths > 1 ? 's' : ''}`;
 		}
 
-		return `${ageInDays} day${ageInDays > 1 ? 's' : ''}`;
+		return `${ageInDays} day${ageInDays > 1 || ageInDays === 0 ? 's' : ''}`;
 	};
 </script>
 

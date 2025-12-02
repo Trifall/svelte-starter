@@ -45,32 +45,6 @@
 		const optional = data.envVars.optional;
 		return {
 			site: optional.filter((v: { key: string; isSet: boolean }) => v.key === 'PUBLIC_SITE_NAME'),
-			backups: optional.filter((v: { key: string; isSet: boolean }) =>
-				[
-					'BACKUPS_DIRECTORY',
-					'AWS_ACCESS_KEY_ID',
-					'AWS_SECRET_ACCESS_KEY',
-					'AWS_REGION',
-					'AWS_S3_BUCKET',
-					'AWS_S3_KEY_PREFIX',
-				].includes(v.key)
-			),
-			r2: optional.filter((v: { key: string; isSet: boolean }) =>
-				[
-					'R2_ACCESS_KEY_ID',
-					'R2_SECRET_ACCESS_KEY',
-					'R2_ACCOUNT_ID',
-					'R2_BUCKET_NAME',
-					'R2_KEY_PREFIX',
-				].includes(v.key)
-			),
-			deprecated: optional.filter((v: { key: string; isSet: boolean }) =>
-				[
-					'FORCE_ENABLE_REGISTRATION',
-					'EMERGENCY_RESET_USERNAME',
-					'EMERGENCY_RESET_PASSWORD',
-				].includes(v.key)
-			),
 		};
 	});
 
@@ -340,89 +314,6 @@
 											<span class="text-xs text-muted-foreground">Optional</span>
 										{/if}
 									</div>
-								{/each}
-							</div>
-						</div>
-					{/if}
-
-					<!-- Backup Configuration -->
-					{#if envVarGroups().backups.length > 0}
-						<div>
-							<div class="mb-2 flex items-center gap-2">
-								<h3 class="text-sm font-semibold text-foreground">AWS S3 Backups</h3>
-								{#if isGroupConfigured(envVarGroups().backups.filter((v: { key: string; isSet: boolean }) => !v.key.includes('KEY_PREFIX')))}
-									<Check class="h-4 w-4 text-green-500" />
-								{:else if hasPartialConfig(envVarGroups().backups)}
-									<TriangleAlert class="h-4 w-4 text-yellow-500" />
-								{/if}
-							</div>
-							<div class="space-y-1.5">
-								{#each envVarGroups().backups as envVar (envVar.key)}
-									<div
-										class="flex items-center justify-between rounded-md border border-border bg-card px-3 py-2"
-									>
-										<span class="font-mono text-sm">{envVar.key}</span>
-										{#if envVar.isSet}
-											<Check class="h-4 w-4 text-green-500" />
-										{:else}
-											<span class="text-xs text-muted-foreground">Optional</span>
-										{/if}
-									</div>
-								{/each}
-							</div>
-						</div>
-					{/if}
-
-					<!-- R2 Configuration -->
-					{#if envVarGroups().r2.length > 0}
-						<div>
-							<div class="mb-2 flex items-center gap-2">
-								<h3 class="text-sm font-semibold text-foreground">Cloudflare R2 Backups</h3>
-								{#if isGroupConfigured(envVarGroups().r2.filter((v: { key: string; isSet: boolean }) => !v.key.includes('KEY_PREFIX')))}
-									<Check class="h-4 w-4 text-green-500" />
-								{:else if hasPartialConfig(envVarGroups().r2)}
-									<TriangleAlert class="h-4 w-4 text-yellow-500" />
-								{/if}
-							</div>
-							<div class="space-y-1.5">
-								{#each envVarGroups().r2 as envVar (envVar.key)}
-									<div
-										class="flex items-center justify-between rounded-md border border-border bg-card px-3 py-2"
-									>
-										<span class="font-mono text-sm">{envVar.key}</span>
-										{#if envVar.isSet}
-											<Check class="h-4 w-4 text-green-500" />
-										{:else}
-											<span class="text-xs text-muted-foreground">Optional</span>
-										{/if}
-									</div>
-								{/each}
-							</div>
-						</div>
-					{/if}
-
-					<!-- Deprecated Variables -->
-					{#if envVarGroups().deprecated.some((v: { key: string; isSet: boolean }) => v.isSet)}
-						<div>
-							<div class="mb-2 flex items-center gap-2">
-								<h3 class="text-sm font-semibold text-yellow-600 dark:text-yellow-500">
-									Deprecated Variables
-								</h3>
-								<TriangleAlert class="h-4 w-4 text-yellow-500" />
-							</div>
-							<p class="mb-2 text-xs text-muted-foreground">
-								These variables are no longer needed and can be removed after setup
-							</p>
-							<div class="space-y-1.5">
-								{#each envVarGroups().deprecated as envVar (envVar.key)}
-									{#if envVar.isSet}
-										<div
-											class="flex items-center justify-between rounded-md border border-yellow-500/50 bg-yellow-500/10 px-3 py-2"
-										>
-											<span class="font-mono text-sm">{envVar.key}</span>
-											<TriangleAlert class="h-4 w-4 text-yellow-500" />
-										</div>
-									{/if}
 								{/each}
 							</div>
 						</div>
