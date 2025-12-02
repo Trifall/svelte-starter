@@ -3,16 +3,12 @@
 	import AppSidebar from '$components/sidebar/app-sidebar.svelte';
 	import ThemeToggle from '$components/theme-toggle.svelte';
 	import * as Sidebar from '$components/ui/sidebar';
-	import type { LayoutServerData } from './$types';
 
-	const { data, children }: { data: LayoutServerData; children: Snippet } = $props();
-
-	const isAdmin = $derived(data.isAdmin);
-	const user = $derived(data.user);
+	const { children }: { children: Snippet } = $props();
 </script>
 
 <Sidebar.Provider>
-	<AppSidebar {isAdmin} {user} />
+	<AppSidebar />
 	<Sidebar.Inset>
 		<div class="flex h-full flex-col">
 			<header

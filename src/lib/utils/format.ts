@@ -1,103 +1,10 @@
-import type { DBUser } from '$database/schema';
 import { env } from '$env/dynamic/public';
 import type { ZodError } from 'zod';
-import { USERNAME_PLACEHOLDER } from '$src/lib/auth/user-management';
 
 export const getPublicSiteName = () => {
 	return env.PUBLIC_SITE_NAME && env.PUBLIC_SITE_NAME.length > 0
 		? env.PUBLIC_SITE_NAME
 		: 'svelte-starter';
-};
-
-/**
- * Checks if the user is an unauthenticated user
- * @param user - User object
- * @returns true if the user is an unauthenticated user, false otherwise
- */
-export const isUnauthenticatedUser = (user: DBUser | Partial<DBUser> | null): user is null => {
-	return !user || !('id' in user);
-};
-
-/**
- * Checks if the user is a database user
- * @param user - User object
- * @returns true if the user is a database user, false otherwise
- */
-export const isDBUser = (user: DBUser | Partial<DBUser> | null): boolean => {
-	return !!user && 'role' in user && 'id' in user && !!user.id && user?.id.length > 0;
-};
-
-/**
- * Formats the user name based on the user type
- * @param user - User object
- * @returns formatted user name
- */
-export const formatUserName = (user: DBUser | Partial<DBUser>) => {
-	if (isDBUser(user)) {
-		return user.displayUsername ?? user.username ?? user.name ?? 'Unknown';
-	}
-
-	if (isUnauthenticatedUser(user)) {
-		return 'Guest';
-	}
-
-	return 'Unknown';
-};
-
-/**
- * Checks if the email contains a placeholder
- * @param email - Email address
- * @returns true if the email contains a placeholder, false otherwise
- */
-const containsPlaceholderEmail = (email: string) => {
-	return email.includes(USERNAME_PLACEHOLDER);
-};
-
-export const formatEmail = (email: string | undefined) => {
-	if (!email || containsPlaceholderEmail(email)) {
-		return '';
-	}
-
-	return email;
-};
-
-/**
- * Formats the user email based on the user type
- * @param user - User object
- * @returns formatted user email or null if the email is a placeholder
- */
-export const formatEmailFromUserObject = (user: DBUser | Partial<DBUser>): string | null => {
-	if (isDBUser(user)) {
-		if (containsPlaceholderEmail(user?.email ?? '')) {
-			return null;
-		}
-		return user?.email ?? null;
-	}
-
-	if (isUnauthenticatedUser(user)) {
-		return null;
-	}
-
-	return null;
-};
-
-/**
- * Formats the user name initials based on the user type
- * @param user - User object
- * @returns formatted user name initials
- */
-export const formatUserNameInitials = (user: DBUser | Partial<DBUser>) => {
-	const name = formatUserName(user);
-
-	if (!name || name.trim() === '') {
-		return '';
-	}
-
-	return name
-		.split(' ')
-		.filter((word: string) => word.length > 0)
-		.map((word: string) => word[0]?.toUpperCase() || '')
-		.join('');
 };
 
 /**

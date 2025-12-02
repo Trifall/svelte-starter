@@ -2,7 +2,7 @@ import { defineConfig } from 'drizzle-kit';
 
 // construct database URL from environment variables with sensible defaults
 const dbUser = process.env.DB_USER || 'postgres';
-const dbName = process.env.DB_NAME || 'svelte_starter';
+const dbName = process.env.DB_NAME || 'cosmic';
 const dbPort = process.env.DB_PORT || '5432';
 const dbHost = process.env.DB_HOST || 'db';
 const dbSslMode = process.env.DB_SSLMODE || 'disable';

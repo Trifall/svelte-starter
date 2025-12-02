@@ -1,7 +1,5 @@
-import type { user } from './auth.schema';
+// export stuff here for db schemas
 
-export * from './auth.schema';
-export * from './base';
-export * from './system';
+const schema = {};
 
-export type DBUser = typeof user.$inferSelect;
+export default schema;
