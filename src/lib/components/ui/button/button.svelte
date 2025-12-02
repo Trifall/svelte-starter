@@ -9,7 +9,8 @@
 			variant: {
 				default: 'bg-primary text-primary-foreground hover:bg-primary/90',
 				destructive: 'bg-destructive text-destructive-foreground hover:bg-destructive/90',
-				outline: 'border-input bg-background hover:bg-accent hover:text-accent-foreground border',
+				outline:
+					'border-foreground dark:border-input bg-background hover:bg-accent hover:text-accent-foreground border',
 				secondary: 'bg-secondary text-secondary-foreground hover:bg-secondary/80',
 				ghost: 'hover:bg-accent hover:text-accent-foreground',
 				link: 'text-primary underline-offset-4 hover:underline',
@@ -48,19 +49,30 @@
 		href = undefined,
 		type = 'button',
 		children,
+		disabled = false,
 		...restProps
 	}: ButtonProps = $props();
 </script>
 
 {#if href}
-	<a bind:this={ref} class={cn(buttonVariants({ variant, size }), className)} {href} {...restProps}>
+	<a
+		bind:this={ref}
+		class={cn(
+			buttonVariants({ variant, size }),
+			className,
+			disabled ? 'pointer-events-none cursor-default opacity-50' : ''
+		)}
+		{href}
+		{...restProps}
+	>
 		{@render children?.()}
 	</a>
 {:else}
 	<button
 		bind:this={ref}
-		class={cn(buttonVariants({ variant, size }), className)}
+		class={cn(buttonVariants({ variant, size }), className, '')}
 		{type}
+		{disabled}
 		{...restProps}
 	>
 		{@render children?.()}

@@ -2,7 +2,7 @@
 
 services:
   postgres:
-    image: postgres:15-alpine
+    image: postgres:16-alpine
     container_name: svelte-starter-postgres
     environment:
       POSTGRES_USER: ${DB_USER:?err}
@@ -17,8 +17,8 @@ services:
     ports:
       - '127.0.0.1:${DB_PORT:-5432}:5432'
     volumes:
-      - postgres-data:/var/lib/postgresql/data
+      - postgres-data-svelte-starter:/var/lib/postgresql/data
     restart: unless-stopped
 
 volumes:
-  postgres-data:
+  postgres-data-svelte-starter:

@@ -19,3 +19,20 @@ Thumbs.db
 # Vite
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
+
+.eslintcache
+
+**.env
+
+# Backups
+/backups
+
+# Logs
+logs
+
+# Stats
+stats.html
+
+.mcp.json
+
+docker-compose.local.dev

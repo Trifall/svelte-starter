@@ -16,6 +16,9 @@ const config: Config = {
 			},
 		},
 		extend: {
+			screens: {
+				xs: '480px',
+			},
 			colors: {
 				border: 'hsl(var(--border) / <alpha-value>)',
 				input: 'hsl(var(--input) / <alpha-value>)',
@@ -30,6 +33,7 @@ const config: Config = {
 					DEFAULT: 'hsl(var(--secondary) / <alpha-value>)',
 					foreground: 'hsl(var(--secondary-foreground) / <alpha-value>)',
 				},
+
 				destructive: {
 					DEFAULT: 'hsl(var(--destructive) / <alpha-value>)',
 					foreground: 'hsl(var(--destructive-foreground) / <alpha-value>)',
@@ -60,6 +64,10 @@ const config: Config = {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))',
 				},
+				'secondary-darker': {
+					DEFAULT: 'hsl(var(--secondary-darker) / <alpha-value>)',
+					foreground: 'hsl(var(--secondary-darker-foreground) / <alpha-value>)',
+				},
 			},
 			borderRadius: {
 				xl: 'calc(var(--radius) + 4px)',
@@ -73,10 +81,10 @@ const config: Config = {
 			keyframes: {
 				'accordion-down': {
 					from: { height: '0' },
-					to: { height: 'var(--radix-accordion-content-height)' },
+					to: { height: 'var(--bits-accordion-content-height)' },
 				},
 				'accordion-up': {
-					from: { height: 'var(--radix-accordion-content-height)' },
+					from: { height: 'var(--bits-accordion-content-height)' },
 					to: { height: '0' },
 				},
 				'caret-blink': {
@@ -88,6 +96,7 @@ const config: Config = {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
 				'caret-blink': 'caret-blink 1.25s ease-out infinite',
+				'fast-pulse': 'pulse 1s cubic-bezier(0.4, 0, 0.6, 1) infinite',
 			},
 		},
 	},

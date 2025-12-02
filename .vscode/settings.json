@@ -19,7 +19,8 @@
 	"explorer.fileNesting.patterns": {
 		"tsconfig.json": "tsconfig.*.json, env.d.ts",
 		"vite.config.*": "jsconfig*, vitest.config.*, cypress.config.*, playwright.config.*",
-		"package.json": "package-lock.json, pnpm*, .yarnrc*, yarn*, .eslint*, eslint*, .prettier*, prettier*, .editorconfig, .gitattributes, bun.lock, .npmrc"
+		"package.json": "vite.config.*,components.json, .markdownlint.json, svelte.config.*, .gitignore, tsconfig.*, package-lock.json, pnpm*, .yarnrc*, yarn*, .eslint*, eslint*, .prettier*, prettier*, .editorconfig, .gitattributes, bun.lock*, .npmrc, tailwind.config.*, .oxlint*",
+		"tailwind.config.ts": "postcss.config.js"
 	},
 
 	// use LF line endings
@@ -41,7 +42,8 @@
 	// svelte support
 	"svelte.enable-ts-plugin": true,
 	"[svelte]": {
-		"editor.defaultFormatter": "svelte.svelte-vscode"
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
 	},
-	"typescript.tsdk": "node_modules/typescript/lib"
+	"typescript.tsdk": "node_modules/typescript/lib",
+	"eslint.useFlatConfig": true
 }

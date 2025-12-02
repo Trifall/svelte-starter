@@ -2,7 +2,10 @@
 // for information about these interfaces
 declare global {
 	namespace App {
-		// interface Locals {}
+		interface Locals {
+			user: DBUser | null;
+			isAdmin: boolean;
+		}
 		// interface Error {}
 		// interface PageData {}
 		// interface PageState {}
