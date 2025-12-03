@@ -36,3 +36,5 @@ stats.html
 .mcp.json
 
 docker-compose.local.dev
+
+opencode.json
