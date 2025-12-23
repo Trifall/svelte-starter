@@ -1,17 +1,24 @@
 <script lang="ts">
 	import { ModeWatcher, mode } from 'mode-watcher';
 	import type { Snippet } from 'svelte';
+	import { MetaTags, deepMerge } from 'svelte-meta-tags';
 	import { Toaster } from 'svelte-sonner';
+	import { page } from '$app/state';
 	import '$src/app.css';
 	import { getPublicSiteName } from '$src/lib/utils/format';
+	import type { LayoutData } from './$types';
 
-	let { children }: { children: Snippet } = $props();
+	let { children, data }: { children: Snippet; data: LayoutData } = $props();
+
+	let metaTags = $derived(deepMerge(data.baseMetaTags, page.data.pageMetaTags));
 </script>
 
 <ModeWatcher />
 
+<MetaTags {...metaTags} />
+
 <svelte:head>
-	<title>{getPublicSiteName()}</title>
+	<meta name="theme-color" content="#ff5f1f" />
 	<meta name="darkreader-lock" />
 </svelte:head>
 
