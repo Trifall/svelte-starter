@@ -5,7 +5,6 @@
 	import { Toaster } from 'svelte-sonner';
 	import { page } from '$app/state';
 	import '$src/app.css';
-	import { getPublicSiteName } from '$src/lib/utils/format';
 	import type { LayoutData } from './$types';
 
 	let { children, data }: { children: Snippet; data: LayoutData } = $props();
