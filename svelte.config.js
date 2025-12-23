@@ -1,5 +1,5 @@
+import adapter from '@sveltejs/adapter-node';
 import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
-import adapter from 'svelte-adapter-bun';
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
@@ -19,6 +19,10 @@ const config = {
 			$database: './database',
 			'@': './',
 		},
+		// use this to enable csrf validator when necessary
+		// csrf: {
+		// 	trustedOrigins: [process.env.PUBLIC_WEB_UI_URL].filter(Boolean),
+		// },
 		experimental: {
 			remoteFunctions: true,
 		},

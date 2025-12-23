@@ -14,6 +14,15 @@ if (!building) {
 }
 
 export const handle: Handle = sequence(
+	// protocol fix and debug logging for reverse proxy
+	async ({ event, resolve }) => {
+		const proto = event.request.headers.get('x-forwarded-proto');
+		if (proto === 'https') {
+			event.url.protocol = 'https:';
+		}
+
+		return resolve(event);
+	},
 	// setup redirect middleware - check if first-time setup is completed
 	async ({ event, resolve }) => {
 		// skip during build process
